@@ -44,7 +44,7 @@ const parseData = (data) => {
     };
   });
 };
-export const getWeather = (amount) => (dispatch, getState) => {
+export const getWeather = () => (dispatch, getState) => {
   const store = getState();
   const { search } = store.weather;
 
@@ -55,7 +55,7 @@ export const getWeather = (amount) => (dispatch, getState) => {
       const parsedData = parseData(data.list);
       dispatch(changeWeather(parsedData));
     })
-    .catch((err) => {
+    .catch(() => {
       dispatch(setError());
     });
 };
